@@ -20,7 +20,14 @@
     <script>
         var color
 
+        function pintarCuadro(event){
+            if(color !== null){
+                event.target.style.backgroundColor= color
+            }
+        }
+
         document.addEventListener("keydown", function(event) {
+            console.log(event.key)
             switch (event.key) {
                 case "a":
                     color = "green"
@@ -40,20 +47,10 @@
             console.log(color)
         })
 
-        document.getElementById("box1").addEventListener("click", function(event){
-            event.target.style.backgroundColor= color
-        })
-        document.getElementById("box2").addEventListener("click", function(event){
-            event.target.style.backgroundColor= color
-        })
-
-        document.getElementById("box3").addEventListener("click", function(event){
-            event.target.style.backgroundColor= color
-        })
-
-        document.getElementById("box4").addEventListener("click", function(event){
-            event.target.style.backgroundColor= color
-        })
+        boxes = document.querySelectorAll("div[class=boxes]")
+        boxes.forEach(element => {
+            element.addEventListener("click", pintarCuadro)
+        });
 
     </script>
 
